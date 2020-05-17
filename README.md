@@ -7,10 +7,9 @@ Generation of question papers through a question bank is an important activity i
 I have implemented algorithm written by Vaibhav M. Kale and Arvind W. Kiwelekar for question paper template generation in C++ to provide fast performance. Implementation is extensible in terms of constriant it support to create question paper template.
 
 ## Installation
-You can install qpt_generator using pip with following command:
+You can install qpt_generator using easy_install with following command:
 ```console
-(source package)
-pip install https://github.com/Niraj-Kamdar/qpt_generator/archive/master.zip
+easy_install qpt-generator
 ```
 ## Usage
 After installing module, you can import it using following command:
