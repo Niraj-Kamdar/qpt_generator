@@ -8,11 +8,14 @@ with open(path.join(this_directory, 'README.md'), encoding='utf-8') as f:
     long_description = f.read()
 
 setup(name="qpt_generator",
-      version="0.1.1",
+      version="0.1.1.post1",
       description="Question Paper Template Generator",
       long_description=long_description,
       long_description_content_type='text/markdown',
       author="Niraj Kamdar",
+      package_data={
+          'qpt_generator': ["*.pxd", "*.pyx", "*.cpp", "*.h"]
+      },
       packages=find_packages(),
       ext_modules=cythonize('qpt_generator/qpt_generator.pyx'),
       license='MIT',
