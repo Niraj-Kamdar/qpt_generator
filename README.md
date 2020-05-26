@@ -6,6 +6,8 @@ Generation of question papers through a question bank is an important activity i
 
 I have implemented algorithm written by Vaibhav M. Kale and Arvind W. Kiwelekar for question paper template generation in C++ to provide fast performance. Implementation is extensible in terms of constriant it support to create question paper template.
 
+The qpt_generator package was motivated by the needs of my academic project [Question Paper Generator](https://github.com/Niraj-Kamdar/question-paper-generator).
+
 ## Installation
 You can install qpt_generator using easy_install with following command:
 ```console
@@ -28,6 +30,7 @@ You have to provide two inputs to the constructor of QPTGenerator:
 Output will be generated when you call generate method of the QPTGenerator class. Here, output is a dictionary of list of the alloted unit, cognitive level, difficulty and mark by question no. 
 
 ```python
+from qpt_generator import QPTGenerator
 mark_distributions = {
     "question": [5, 5, 10, 4, 6, 5, 5],
     "unit": [8, 8, 8, 5, 11],
