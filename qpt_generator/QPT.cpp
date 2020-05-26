@@ -1,4 +1,3 @@
-#include <iostream>
 #include "QPT.h"
 
 namespace QPT{
@@ -148,25 +147,3 @@ namespace QPT{
         }
     }
 } // namespace QPT
-
-int main(){
-    unordered_map<string, vector<int>> input;
-    input["question"] = {5, 5, 10, 4, 6, 5, 5};
-    input["unit"] = {8, 8, 8, 5, 11};
-    input["difficulty"] = {13, 15, 12};
-    input["cognitive"] = {12, 18, 10};
-    vector<int> question_no = {1, 1, 2, 3, 3, 4, 4};
-    QPT::QuestionPaper c = QPT::QuestionPaper(input, question_no);
-    c.generate();
-
-    cout<<"final output"<<endl;
-    for(auto && t: c.allot_by_question_no){
-        cout<<endl<<t.first<<endl;
-        for(auto &&q : t.second){
-            cout<<q<<" ";
-        }
-    }
-    cout<<endl<<"##################"<<endl<<endl;
-
-    return 0;
-}

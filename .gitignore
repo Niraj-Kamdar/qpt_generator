@@ -2,4 +2,6 @@ build/
 dist/
 *.egg-info/
 .idea/
-qpt_generator.cpp
+qpt_generator/qpt_generator.cpp
+*.pyd
+*.so
