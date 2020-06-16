@@ -20,7 +20,7 @@ os.environ["CC"] = "g++"
 os.environ["CXX"] = "g++"
 
 setup(name="qpt_generator",
-      version="0.1.1.post1",
+      version="0.1.2",
       description="Question Paper Template Generator",
       long_description=long_description,
       long_description_content_type='text/markdown',
