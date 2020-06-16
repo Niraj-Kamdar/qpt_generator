@@ -1,11 +1,23 @@
-from setuptools import setup, find_packages
-from Cython.Build import cythonize
+import os
+import pip
+
+try:
+    from Cython.Distutils.build_ext import new_build_ext
+except ImportError:
+    pip.main(['install', "cython"])
+    from Cython.Distutils.build_ext import new_build_ext
+
+from setuptools import setup, find_packages, Extension
 
 # read the contents of your README file
 from os import path
+
 this_directory = path.abspath(path.dirname(__file__))
 with open(path.join(this_directory, 'README.md'), encoding='utf-8') as f:
     long_description = f.read()
+
+os.environ["CC"] = "g++"
+os.environ["CXX"] = "g++"
 
 setup(name="qpt_generator",
       version="0.1.1.post1",
@@ -17,14 +29,17 @@ setup(name="qpt_generator",
           'qpt_generator': ["*.pxd", "*.pyx", "*.cpp", "*.h"]
       },
       packages=find_packages(),
-      ext_modules=cythonize('qpt_generator/qpt_generator.pyx'),
+      ext_modules=[Extension("qpt_generator",
+                             cmdclass={'build_ext': new_build_ext},
+                             include_dirs=['qpt_generator'],
+                             sources=["qpt_generator/qpt_generator.pyx"],
+                             language="c++",
+                             extra_compile_args=["-std=c++11"],
+                             extra_link_args=["-std=c++11"])],
       license='MIT',
       url='https://github.com/Niraj-Kamdar/qpt_generator',
       download_url='https://github.com/user/reponame/archive/v_01.tar.gz',
       keywords=['question', 'paper', 'template', 'generator'],
-      install_requires=[
-          'cython',
-      ],
       classifiers=[
           'Development Status :: 3 - Alpha',
           # Chose either "3 - Alpha", "4 - Beta" or "5 - Production/Stable" as the current state of your package
