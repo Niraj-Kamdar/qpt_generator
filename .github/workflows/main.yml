@@ -22,11 +22,9 @@ jobs:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - uses: actions/checkout@v2
     - name: build wheels 
+      env: 
+        TWINE_USERNAME: 1
+        TWINE_PASSWORD: 2
       uses:  Niraj-Kamdar/manywheel_builder@master
-    - name: uploader
-      uses: actions/upload-artifact@v2
-      with:
-        name: wheels
-        path: /github/workspace/wheelhouse
     
   
