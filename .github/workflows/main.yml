@@ -42,4 +42,5 @@ jobs:
           python-version: ${{ matrix.python-version }}
       - name: Build Wheel for python ${{ matrix.python-version }}
         run: python setup.py bdist_wheel
+        continue-on-error: true
   
