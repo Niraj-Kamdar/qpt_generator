@@ -35,8 +35,8 @@ namespace QPT{
     }
     
     void QuestionPaper::match_on(string constraint){
-        for(int i=0; i<this->mark_of["question"].size(); i++){
-            for(int j=0; j<this->mark_of[constraint].size(); j++){
+        for(unsigned int i=0; i<this->mark_of["question"].size(); i++){
+            for(unsigned int j=0; j<this->mark_of[constraint].size(); j++){
                 if( this->status_of["question"][i] == 1 &&
                     this->status_of[constraint][j] == 1 &&
                     this->mark_of["question"][i] == this->mark_of[constraint][j]){
@@ -51,9 +51,9 @@ namespace QPT{
     }
 
     void QuestionPaper::add_and_match_on(string constraint){
-        for(int i=0; i<this->mark_of["question"].size(); i++){
-            for(int j=0; j<this->mark_of["question"].size(); j++){
-                for(int k=0; k<this->mark_of[constraint].size(); k++){
+        for(unsigned int i=0; i<this->mark_of["question"].size(); i++){
+            for(unsigned int j=0; j<this->mark_of["question"].size(); j++){
+                for(unsigned int k=0; k<this->mark_of[constraint].size(); k++){
                     if( i != j &&
                         this->status_of["question"][i] == 1 &&
                         this->status_of["question"][j] == 1 &&
