@@ -13,6 +13,10 @@ jobs:
       - name: build and upload manylinux wheels
         uses:  Niraj-Kamdar/manywheel_builder@master
         continue-on-error: true
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.7
       - name: create source distribution
         run: python setup.py sdist
       - name: upload source distribution
