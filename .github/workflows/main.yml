@@ -13,26 +13,16 @@ on:
 # # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 # jobs:
 #   # This workflow contains a single job called "build"
-#   build:
-#     # The type of runner that the job will run on
-#     runs-on: ubuntu-latest
-
-#     # Steps represent a sequence of tasks that will be executed as part of the job
-#     steps:
-#     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-#     - uses: actions/checkout@v2
-#     - name: build wheels 
-#       env: 
-#         TWINE_USERNAME: ${{ secrets.TWINE_USERNAME }}
-#         TWINE_PASSWORD: ${{ secrets.TWINE_PASSWORD }}
-#       uses:  Niraj-Kamdar/manywheel_builder@master
     
 jobs:
-  build:
+  Matrix-build:
     runs-on: ${{ matrix.os }}
+    env:
+      TWINE_USERNAME: ${{ secrets.TWINE_USERNAME }}
+      TWINE_PASSWORD: ${{ secrets.TWINE_PASSWORD }}
     strategy:
       matrix:
-        os: [windows-latest]
+        os: [macos-latest, windows-latest]
         python-version: [3.6, 3.7, 3.8]
     steps:
       - uses: actions/checkout@v2
@@ -44,4 +34,21 @@ jobs:
         run: |
           pip install wheel
           python setup.py bdist_wheel
-  
+      - name: Uploading Wheel for python ${{ matrix.python-version }}
+        run: |
+          pip install twine
+          twine upload dist/*
+
+   Linux-build:
+     # The type of runner that the job will run on
+     runs-on: ubuntu-latest
+
+     # Steps represent a sequence of tasks that will be executed as part of the job
+     steps:
+     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+     - uses: actions/checkout@v2
+     - name: build wheels
+       env:
+         TWINE_USERNAME: ${{ secrets.TWINE_USERNAME }}
+         TWINE_PASSWORD: ${{ secrets.TWINE_PASSWORD }}
+       uses:  Niraj-Kamdar/manywheel_builder@master
