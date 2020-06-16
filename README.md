@@ -11,6 +11,10 @@ The qpt_generator package was motivated by the needs of my academic project [Que
 ## Installation
 You can install qpt_generator using easy_install with following command:
 ```console
+pip install qpt-generator
+```
+or
+```console
 easy_install qpt-generator
 ```
 ## Usage
