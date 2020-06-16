@@ -23,8 +23,8 @@ jobs:
     - uses: actions/checkout@v2
     - name: build wheels 
       env: 
-        TWINE_USERNAME: 1
-        TWINE_PASSWORD: 2
+        TWINE_USERNAME: ${{ secrets.TWINE_USERNAME }}
+        TWINE_PASSWORD: ${{ secrets.TWINE_PASSWORD }}
       uses:  Niraj-Kamdar/manywheel_builder@master
     
   
