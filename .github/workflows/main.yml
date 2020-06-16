@@ -28,6 +28,7 @@ jobs:
           TWINE_USERNAME: ${{ secrets.TWINE_USERNAME }}
           TWINE_PASSWORD: ${{ secrets.TWINE_PASSWORD }}
         uses:  Niraj-Kamdar/manywheel_builder@master
+        continue-on-error: true
 
   Matrix-build:
     runs-on: ${{ matrix.os }}
@@ -52,3 +53,4 @@ jobs:
         run: |
           pip install twine
           twine upload dist/*
+        continue-on-error: true
