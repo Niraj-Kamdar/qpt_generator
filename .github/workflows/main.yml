@@ -20,7 +20,7 @@ jobs:
         with:
           python-version: 3.7
       - name: create source distribution
-        run: python3 setup.py sdist
+        run: sudo python3 setup.py sdist
       - name: upload source distribution
         run: |
           pip3 install twine
