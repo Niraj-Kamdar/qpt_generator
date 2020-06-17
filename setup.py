@@ -2,9 +2,10 @@ import os
 from os import path
 
 import pip
-from setuptools import Extension, find_packages, setup
-
 from Cython.Build import cythonize
+from setuptools import Extension
+from setuptools import find_packages
+from setuptools import setup
 
 try:
     from Cython.Distutils.build_ext import new_build_ext
