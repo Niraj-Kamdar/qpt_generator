@@ -2,6 +2,8 @@ name: pypi deployer
 on:
   push:
     branches: [ master ]
+  pull_request:
+    branches: [ test-1 ]
 jobs:
   Linux-build:
     runs-on: ubuntu-latest
@@ -18,7 +20,7 @@ jobs:
         with:
           python-version: 3.7
       - name: create source distribution
-        run: python setup.py sdist
+        run: sudo python setup.py sdist
       - name: upload source distribution
         run: |
           pip install twine
