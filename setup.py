@@ -25,7 +25,7 @@ extensions = [Extension("qpt_generator.qpt_generator",
                         extra_link_args=["-std=c++11"])]
 
 setup(name="qpt_generator",
-      version="0.1.2.post3",
+      version="0.1.3",
       description="Question Paper Template Generator",
       long_description=long_description,
       long_description_content_type='text/markdown',
