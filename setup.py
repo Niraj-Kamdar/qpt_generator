@@ -1,4 +1,5 @@
 import os
+
 import pip
 
 try:
@@ -6,10 +7,9 @@ try:
 except ImportError:
     pip.main(['install', "cython"])
     from Cython.Distutils.build_ext import new_build_ext
+from Cython.Build import cythonize
 
 from setuptools import setup, find_packages, Extension
-
-# read the contents of your README file
 from os import path
 
 this_directory = path.abspath(path.dirname(__file__))
@@ -18,9 +18,14 @@ with open(path.join(this_directory, 'README.md'), encoding='utf-8') as f:
 
 os.environ["CC"] = "g++"
 os.environ["CXX"] = "g++"
+extensions = [Extension("qpt_generator.qpt_generator",
+                        sources=["qpt_generator/qpt_generator.pyx"],
+                        language="c++",
+                        extra_compile_args=["-std=c++11"],
+                        extra_link_args=["-std=c++11"])]
 
 setup(name="qpt_generator",
-      version="0.1.2",
+      version="0.1.2.r1",
       description="Question Paper Template Generator",
       long_description=long_description,
       long_description_content_type='text/markdown',
@@ -29,13 +34,8 @@ setup(name="qpt_generator",
           'qpt_generator': ["*.pxd", "*.pyx", "*.cpp", "*.h"]
       },
       packages=find_packages(),
-      ext_modules=[Extension("qpt_generator",
-                             cmdclass={'build_ext': new_build_ext},
-                             include_dirs=['qpt_generator'],
-                             sources=["qpt_generator/qpt_generator.pyx"],
-                             language="c++",
-                             extra_compile_args=["-std=c++11"],
-                             extra_link_args=["-std=c++11"])],
+      cmdclass={'build_ext': new_build_ext},
+      ext_modules=cythonize(extensions, include_path=["qpt_generator"]),
       license='MIT',
       url='https://github.com/Niraj-Kamdar/qpt_generator',
       download_url='https://github.com/user/reponame/archive/v_01.tar.gz',
