@@ -13,6 +13,14 @@ jobs:
       - name: build and upload manylinux wheels
         uses:  Niraj-Kamdar/manywheel_builder@master
         continue-on-error: true
+
+  Source-dist:
+    runs-on: windows-latest
+    env:
+      TWINE_USERNAME: ${{ secrets.TWINE_USERNAME }}
+      TWINE_PASSWORD: ${{ secrets.TWINE_PASSWORD }}
+    steps:
+      - uses: actions/checkout@v2
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
