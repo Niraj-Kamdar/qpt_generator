@@ -2,8 +2,6 @@ name: pypi deployer
 on:
   push:
     branches: [ master ]
-  pull_request:
-    branches: [ master ]
 jobs:
   Linux-build:
     runs-on: ubuntu-latest
