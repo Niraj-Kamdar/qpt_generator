@@ -57,7 +57,7 @@ namespace QPT{
                     if( i != j &&
                         this->status_of["question"][i] == 1 &&
                         this->status_of["question"][j] == 1 &&
-                        this->status_of["unit"][k] == 1 &&
+                        this->status_of[constraint][k] == 1 &&
                         this->mark_of["question"][i] + 
                         this->mark_of["question"][j] ==
                         this->mark_of[constraint][k]){
@@ -134,7 +134,7 @@ namespace QPT{
     }
 
     void QuestionPaper::generate(){
-        for(auto && constraint : mark_of){
+        for(auto && constraint : this->mark_of){
             if(constraint.first != "question"){
                 this->match_on(constraint.first);
                 this->add_and_match_on(constraint.first);
@@ -143,7 +143,7 @@ namespace QPT{
             fill(this->status_of["question"].begin(),
                  this->status_of["question"].end(), 1);
             
-            this->mark_of["question"] = allot_by_question_no["question"];
+            this->mark_of["question"] = this->allot_by_question_no["question"];
         }
     }
 } // namespace QPT
