@@ -1,16 +1,17 @@
 import os
+from os import path
 
 import pip
+from setuptools import Extension, find_packages, setup
+
+from Cython.Build import cythonize
 
 try:
     from Cython.Distutils.build_ext import new_build_ext
 except ImportError:
     pip.main(["install", "cython"])
     from Cython.Distutils.build_ext import new_build_ext
-from Cython.Build import cythonize
 
-from setuptools import setup, find_packages, Extension
-from os import path
 
 this_directory = path.abspath(path.dirname(__file__))
 with open(path.join(this_directory, "README.md"), encoding="utf-8") as f:
