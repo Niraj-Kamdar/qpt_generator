@@ -30,6 +30,8 @@ jobs:
       - uses: actions/checkout@v2
       - name: build and upload manylinux wheels
         uses:  Niraj-Kamdar/manylinux-wheel-builder@master
+        with:
+          python-versions: "3.*"
         continue-on-error: true
 
   Source-dist:
