@@ -31,7 +31,7 @@ jobs:
       - name: build and upload manylinux wheels
         uses:  Niraj-Kamdar/manylinux-wheel-builder@master
         with:
-          python-versions: "3.6, 3.7"
+          python-versions: "3.*"
         continue-on-error: true
 
   Source-dist:
